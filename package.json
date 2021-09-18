@@ -1,0 +1,24 @@
+{
+  "name": "platzi-conf-store",
+  "version": "1.0.0",
+  "description": "Proyecto didáctico de Platzi Conf Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Franklingp/platzi-conf-store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Franklingp/platzi-conf-store/issues"
+  },
+  "homepage": "https://github.com/Franklingp/platzi-conf-store#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
