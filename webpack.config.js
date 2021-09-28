@@ -7,7 +7,8 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: "bundle.[contenthash].js",
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "/"
     },
     resolve: {
         extensions: [".js", ".jsx"]
@@ -52,7 +53,6 @@ module.exports = {
 
     devServer: {
         historyApiFallback: true,
-        // contentBase: path.join(__dirname, "dist"),
         compress: true,
         port: 8080
     }
