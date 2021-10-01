@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //styles
 import '../styles/components/Information.css';
 
-function Information() {
+function Information({ history }) {
   return (
     <div className="Information">
       <div className="Information-content">
@@ -39,8 +40,12 @@ function Information() {
           </form>
         </div>
         <div className="Information-buttons">
-          <div className="Information-back">Regresar</div>
-          <div className="Information-next">Pagar</div>
+          <div className="Information-back" onClick={() => history.goBack()}>
+            Regresar
+          </div>
+          <Link to="/checkout/payment">
+            <div className="Information-next">Pagar</div>
+          </Link>
         </div>
       </div>
       <div className="Information-sidebar">

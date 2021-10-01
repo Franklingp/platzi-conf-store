@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //styles
 import '../styles/components/Checkout.css';
@@ -13,12 +14,16 @@ function CheckOut() {
             <h4>Item Name</h4>
             <span>$10</span>
           </div>
-          <button type="button">Eliminar</button>
+          <button type="button">
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </div>
       </div>
       <div className="Checkout-sidebar">
         <h3>Precio total: $10</h3>
-        <button type="button">Continuar pedido</button>
+        <Link to="/checkout/information">
+          <button type="button">Continuar pedido</button>
+        </Link>
       </div>
     </div>
   );

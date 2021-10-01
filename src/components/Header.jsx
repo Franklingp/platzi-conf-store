@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //styles
 import '../styles/components/Header.css';
@@ -6,8 +7,15 @@ import '../styles/components/Header.css';
 function Header() {
   return (
     <div className="Header">
-      <h1 className="Header-title">PlatziConf Merch</h1>
-      <div className="Header-checkout">Checkout</div>
+      <Link to="/">
+        <h1 className="Header-title">PlatziConf Merch</h1>
+      </Link>
+
+      <div className="Header-checkout">
+        <Link to="/checkout">
+          <i class="fas fa-shopping-basket"></i>
+        </Link>
+      </div>
     </div>
   );
 }
