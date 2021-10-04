@@ -15,7 +15,7 @@ function CheckOut() {
             <span>$10</span>
           </div>
           <button type="button">
-            <i class="fas fa-trash-alt"></i>
+            <i className="fas fa-trash-alt"></i>
           </button>
         </div>
       </div>

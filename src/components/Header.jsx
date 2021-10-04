@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 //styles
 import '../styles/components/Header.css';
 
+//context
+import AppContext from '../context/AppContext';
+
 function Header() {
+  const {
+    state: { cart },
+  } = useContext(AppContext);
+
   return (
     <div className="Header">
       <Link to="/">
@@ -13,8 +20,9 @@ function Header() {
 
       <div className="Header-checkout">
         <Link to="/checkout">
-          <i class="fas fa-shopping-basket"></i>
+          <i className="fas fa-shopping-basket"></i>
         </Link>
+        {cart.length > 0 && <div className="Header-alert">{cart.length}</div>}
       </div>
     </div>
   );

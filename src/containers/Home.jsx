@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 //copmonents
 import Products from '../components/Products';
 
-//initial state
-import InitialState from '../initialState';
+//context
+import AppContext from '../context/AppContext';
 
 function Home() {
+  const { state, addToCart } = useContext(AppContext);
+
   return (
     <div className="Home">
-      <Products products={InitialState.products} />
+      <Products products={state.products} addToCart={addToCart} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Product({ image, title, price, description }) {
+function Product({ product, addToCart }) {
+  const { image, title, price, description } = product;
   return (
     <div className="Products-item">
       <img src={image} alt={title} />
@@ -9,7 +10,9 @@ function Product({ image, title, price, description }) {
           {title} <span>${price}</span>
         </h2>
         <p>{description}</p>
-        <button type="button">Comprar</button>
+        <button type="button" onClick={() => addToCart(product)}>
+          Comprar
+        </button>
       </div>
     </div>
   );
