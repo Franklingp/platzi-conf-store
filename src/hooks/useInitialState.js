@@ -15,17 +15,19 @@ function useInitialState() {
   };
 
   // remove a product to cart
-  const removeToCart = (payload) => {
+  const removeFromCart = (payload) => {
+    const { cart } = state;
+    cart.splice(payload, 1);
     setState({
       ...state,
-      cart: state.cart.filter((item) => item.id !== payload.id),
+      cart,
     });
   };
 
   return {
     state,
     addToCart,
-    removeToCart,
+    removeFromCart,
   };
 }
 
