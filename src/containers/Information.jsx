@@ -1,10 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useRef } from 'react';
 
 //styles
 import '../styles/components/Information.css';
 
+//context
+import AppCotext from '../context/AppContext';
+
 function Information({ history }) {
+  const { addBuyer, state } = useContext(AppCotext);
+  const { cart } = state;
+  const form = useRef(null);
+
+  //handle form submit
+  const handleSubmit = () => {
+    const formData = new FormData(form.current);
+    const buyer = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      address: formData.get('address'),
+      apto: formData.get('apto'),
+      city: formData.get('city'),
+      country: formData.get('country'),
+      state: formData.get('state'),
+      cp: formData.get('cp'),
+      phone: formData.get('phone'),
+    };
+    addBuyer(buyer);
+  };
+
+  //handle total
+  const handleTotal = () => {
+    const reducer = (acumulator, currentProduct) =>
+      acumulator + currentProduct.price;
+    return cart.reduce(reducer, 0);
+  };
+
   return (
     <div className="Information">
       <div className="Information-content">
@@ -12,7 +42,7 @@ function Information({ history }) {
           <h2>Informacion de contacto:</h2>
         </div>
         <div className="Information-form">
-          <form action="">
+          <form ref={form}>
             <input
               name="name"
               placeholder="Nombre completo"
@@ -43,18 +73,26 @@ function Information({ history }) {
           <div className="Information-back" onClick={() => history.goBack()}>
             Regresar
           </div>
-          <Link to="/checkout/payment">
-            <div className="Information-next">Pagar</div>
-          </Link>
+          <div className="Information-next">
+            <button type="button" onClick={handleSubmit}>
+              Pagar
+            </button>
+          </div>
         </div>
       </div>
       <div className="Information-sidebar">
         <h3>Pedido:</h3>
-        <div className="Information-item">
-          <div className="Information-element">
-            <h4>Nombre de Item</h4>
-            <span>$10</span>
+        {cart.map(({ price, title, id }) => (
+          <div className="Information-item" key={`${id} - ${title}`}>
+            <div className="Information-element">
+              <h4>{title}</h4>
+              <span>{`$${price}`}</span>
+            </div>
           </div>
+        ))}
+        <div className="Information-element-total">
+          <h3>Total</h3>
+          <span>{`$${handleTotal()}`}</span>
         </div>
       </div>
     </div>

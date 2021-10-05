@@ -31,7 +31,7 @@ function CheckOut() {
         ) : (
           <div className="Checkout-empity">
             <h3>El carrito esta vacio...</h3>
-            <i class="fas fa-wind"></i>
+            <i className="fas fa-wind"></i>
             <Link to="/">Volver a la tienda</Link>
           </div>
         )}
