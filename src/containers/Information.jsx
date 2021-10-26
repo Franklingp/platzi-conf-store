@@ -7,6 +7,9 @@ import '../styles/components/Information.css';
 //context
 import AppCotext from '../context/AppContext';
 
+//utils
+import getTotalAmount from '../utils/getTotalAmount';
+
 function Information() {
   const { addBuyer, state } = useContext(AppCotext);
   const { cart } = state;
@@ -29,13 +32,6 @@ function Information() {
     };
     addBuyer(buyer);
     history.push('/checkout/payment');
-  };
-
-  //handle total
-  const handleTotal = () => {
-    const reducer = (acumulator, currentProduct) =>
-      acumulator + currentProduct.price;
-    return cart.reduce(reducer, 0);
   };
 
   return (
@@ -95,7 +91,7 @@ function Information() {
         ))}
         <div className="Information-element-total">
           <h3>Total</h3>
-          <span>{`$${handleTotal()}`}</span>
+          <span>{`$${getTotalAmount(cart)}`}</span>
         </div>
       </div>
     </div>
