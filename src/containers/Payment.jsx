@@ -10,7 +10,7 @@ import '../styles/components/Payment.css';
 
 function Payment() {
   const { state } = useContext(AppContext);
-  const { cart, buyer } = state;
+  const { cart, buyer, addOrder } = state;
 
   //paypay options
   const options = {
@@ -28,7 +28,12 @@ function Payment() {
   const handleSuccess = (details, data) => {
     console.log(details);
     console.log(data);
-    alert('Transaction completed by ' + details.payer.name.given_name);
+    addOrder({
+      buyer,
+      products: cart,
+      details,
+      data,
+    });
   };
 
   return (
@@ -53,6 +58,7 @@ function Payment() {
           <PayPalButton
             onSuccess={handleSuccess}
             onError={handleError}
+            onCancel={(data) => console.log(data)}
             options={options}
             amount={getTotalAmount(cart)}
           />

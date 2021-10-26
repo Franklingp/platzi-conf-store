@@ -32,11 +32,20 @@ function useInitialState() {
     });
   };
 
+  //add new order
+  const addOrder = payload => {
+    setState({
+      ...state,
+      orders: [...state.orders, payload]
+    })
+  }
+
   return {
     state,
     addToCart,
     removeFromCart,
     addBuyer,
+    addOrder,
   };
 }
 
