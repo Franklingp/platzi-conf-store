@@ -1,4 +1,5 @@
 import React, { useContext, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 
 //styles
 import '../styles/components/Information.css';
@@ -6,10 +7,11 @@ import '../styles/components/Information.css';
 //context
 import AppCotext from '../context/AppContext';
 
-function Information({ history }) {
+function Information() {
   const { addBuyer, state } = useContext(AppCotext);
   const { cart } = state;
   const form = useRef(null);
+  const history = useHistory();
 
   //handle form submit
   const handleSubmit = () => {
@@ -26,6 +28,7 @@ function Information({ history }) {
       phone: formData.get('phone'),
     };
     addBuyer(buyer);
+    history.push('/checkout/payment');
   };
 
   //handle total
@@ -82,8 +85,8 @@ function Information({ history }) {
       </div>
       <div className="Information-sidebar">
         <h3>Pedido:</h3>
-        {cart.map(({ price, title, id }) => (
-          <div className="Information-item" key={`${id} - ${title}`}>
+        {cart.map(({ price, title, id }, index) => (
+          <div className="Information-item" key={`${id} - ${index}`}>
             <div className="Information-element">
               <h4>{title}</h4>
               <span>{`$${price}`}</span>
