@@ -14,7 +14,7 @@ function Payment({ history }) {
 
   //paypay options
   const options = {
-    clientId: 'sb',
+    clientId: String(process.env.CLIENT_ID_PP),
     currency: 'USD',
   };
 
