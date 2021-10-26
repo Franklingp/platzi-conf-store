@@ -9,12 +9,12 @@ import getTotalAmount from '../utils/getTotalAmount';
 import '../styles/components/Payment.css';
 
 function Payment({ history }) {
-  const { state } = useContext(AppContext);
-  const { cart, buyer, addOrder } = state;
+  const { state, addOrder } = useContext(AppContext);
+  const { cart, buyer } = state;
 
   //paypay options
   const options = {
-    clientId: '',
+    clientId: 'sb',
     currency: 'USD',
   };
 
@@ -24,15 +24,18 @@ function Payment({ history }) {
     console.log(error);
   };
 
+  //handle cancel
+  const handleCancel = (error) => {
+    alert('Ha cancelado el proceso del pago');
+    console.log(error);
+  };
+
   //handle paypal succes
-  const handleSuccess = (details, data) => {
-    console.log(details);
-    console.log(data);
+  const handleSuccess = (details) => {
     addOrder({
       buyer,
       products: cart,
       details,
-      data,
     });
     history.push('/checkout/success');
   };
@@ -57,9 +60,9 @@ function Payment({ history }) {
         </div>
         <div className="Payment-button">
           <PayPalButton
-            onSuccess={handleSuccess}
+            onSuccess={(data) => handleSuccess(data)}
             onError={handleError}
-            onCancel={(data) => console.log(data)}
+            onCancel={handleCancel}
             options={options}
             amount={getTotalAmount(cart)}
           />

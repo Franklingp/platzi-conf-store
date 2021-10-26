@@ -28,7 +28,7 @@ function useInitialState() {
   const addBuyer = (payload) => {
     setState({
       ...state,
-      buyer: [...state.buyer, payload],
+      buyer: { ...payload },
     });
   };
 
