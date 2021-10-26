@@ -32,13 +32,13 @@ function useInitialState() {
     });
   };
 
-  //add new order
-  const addOrder = payload => {
+  // add new order
+  const addOrder = (payload) => {
     setState({
       ...state,
-      orders: [...state.orders, payload]
-    })
-  }
+      orders: [...state.orders, payload],
+    });
+  };
 
   return {
     state,

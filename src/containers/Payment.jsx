@@ -8,7 +8,7 @@ import getTotalAmount from '../utils/getTotalAmount';
 //styles
 import '../styles/components/Payment.css';
 
-function Payment() {
+function Payment({ history }) {
   const { state } = useContext(AppContext);
   const { cart, buyer, addOrder } = state;
 
@@ -34,6 +34,7 @@ function Payment() {
       details,
       data,
     });
+    history.push('/checkout/success');
   };
 
   return (
