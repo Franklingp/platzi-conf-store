@@ -6,10 +6,10 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 //style
 import '../styles/components/Map.css';
 
-function Map({ location }) {
+function Map({ location, customer }) {
   return (
     <div id="mapid">
-      {location ? (
+      {location && customer ? (
         <MapContainer
           center={location}
           zoom={17}
@@ -22,7 +22,8 @@ function Map({ location }) {
           />
           <Marker position={location}>
             <Popup>
-              Direccion de tu recidencia. <br /> 3 dias para entrega.
+              {`${customer.city} ${customer.state} ${customer.country}`}. <br />{' '}
+              3 dias para entrega.
             </Popup>
           </Marker>
         </MapContainer>

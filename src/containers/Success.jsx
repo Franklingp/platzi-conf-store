@@ -23,7 +23,7 @@ function Success() {
         <h2>{buyer.name}, Gracias por tu compra</h2>
         <span>Tu pedido llegara en 3 dias a tu ubicación:</span>
         <div className="Success-map">
-          <Map location={location} />
+          <Map location={location} customer={buyer} />
         </div>
       </div>
     </div>
