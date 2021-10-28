@@ -2,7 +2,7 @@
 const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
-const dotenvWebpacl = require("dotenv-webpack");
+const dotenvWebpack = require("dotenv-webpack");
 
 module.exports = {
     entry: "./src/index.js",
@@ -49,7 +49,7 @@ module.exports = {
         new miniCssExtractPlugin({
             filename: "assets/[contenthash].css"
         }),
-        new dotenvWebpacl(),
+        new dotenvWebpack(),
     ],
 
     devServer: {
