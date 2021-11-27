@@ -19,7 +19,7 @@ function Header() {
       </Link>
 
       <div className="Header-checkout">
-        <Link to="/checkout">
+        <Link to="/checkout" aria-label="Checkout">
           <i className="fas fa-shopping-basket"></i>
         </Link>
         {cart.length > 0 && <div className="Header-alert">{cart.length}</div>}

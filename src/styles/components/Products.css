@@ -6,7 +6,8 @@
 }
 .Products-item {
   text-decoration: none;
-  box-shadow: 8px 14px 38px rgba(39,44,49,0.06), 1px 3px 8px rgba(39,44,49,0.03);
+  box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
+    1px 3px 8px rgba(39, 44, 49, 0.03);
   border-radius: 5px;
   margin: 0 0 20px 0;
   position: relative;
@@ -21,7 +22,7 @@
   justify-content: space-between;
 }
 .Products-item-info h2 span {
-  color: #33b13a;
+  color: #338e38; /*#33b13a;*/
 }
 .Products-item-info p {
   font-size: 14px;
@@ -45,5 +46,5 @@
   font-weight: 300;
 }
 .Products-item button:hover {
-  background-color: rgba(39,44,49,0.06);
+  background-color: rgba(39, 44, 49, 0.06);
 }
