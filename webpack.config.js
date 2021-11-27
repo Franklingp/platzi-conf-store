@@ -3,6 +3,7 @@ const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 const dotenvWebpack = require("dotenv-webpack");
+// const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -50,6 +51,13 @@ module.exports = {
             filename: "assets/[contenthash].css"
         }),
         new dotenvWebpack(),
+        // new CopyPlugin({
+        //     patterns: [
+        //         { from: 'public/manifest.json', to: '' },
+        //         { from: 'public/service-worker.js', to: '' },
+        //         { from: 'public/icon.png', to: 'assets' },
+        //     ],
+        // }),
     ],
 
     devServer: {

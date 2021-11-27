@@ -1,35 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-/*
-
-address
-:
-"direccion"
-apto
-:
-"apto 15"
-city
-:
-"david"
-country
-:
-"panama"
-cp
-:
-"0426"
-email
-:
-"franklin@piemtenl"
-name
-:
-"Franklin"
-phone
-:
-"64991311"
-state
-:
-*/
 
 function useGetLocation(user) {
   const { city, state, country } = user;
@@ -52,13 +23,13 @@ function useGetLocation(user) {
         ]);
       } else {
         setLocation(null);
-        window.alert(
-          'No se ha podido encontrar la direccion. Atencion al cliente se comunicara contigo para obtener mas información.'
-        );
+        // window.alert(
+        //   'No se ha podido encontrar la direccion. Atencion al cliente se comunicara contigo para obtener mas información.'
+        // );
       }
     } catch (error) {
-      window.alert('Hubo un error al intentar obtener la ubicacion.');
-      console.log(error);
+      // window.alert('Hubo un error al intentar obtener la ubicacion.');
+      // console.log(error);
       setLocation(null);
     }
   };
