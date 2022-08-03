@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 function useGetLocation(user) {
   const { city, state, country } = user;
   const [location, setLocation] = useState(null);
