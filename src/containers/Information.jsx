@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 //styles
 import '../styles/components/Information.css';
@@ -13,25 +14,28 @@ import getTotalAmount from '../utils/getTotalAmount';
 function Information() {
   const { addBuyer, state } = useContext(AppCotext);
   const { cart } = state;
-  const form = useRef(null);
   const history = useHistory();
 
+  //handle form
+  const { register, handleSubmit } = useForm();
+
   //handle form submit
-  const handleSubmit = () => {
-    const formData = new FormData(form.current);
-    const buyer = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      address: formData.get('address'),
-      apto: formData.get('apto'),
-      city: formData.get('city'),
-      country: formData.get('country'),
-      state: formData.get('state'),
-      cp: formData.get('cp'),
-      phone: formData.get('phone'),
-    };
-    addBuyer(buyer);
-    history.push('/checkout/payment');
+  const onSubmit = (data) => {
+    console.log(data);
+    // const formData = new FormData(form.current);
+    // const buyer = {
+    //   name: formData.get('name'),
+    //   email: formData.get('email'),
+    //   address: formData.get('address'),
+    //   apto: formData.get('apto'),
+    //   city: formData.get('city'),
+    //   country: formData.get('country'),
+    //   state: formData.get('state'),
+    //   cp: formData.get('cp'),
+    //   phone: formData.get('phone'),
+    // };
+    // addBuyer(buyer);
+    // history.push('/checkout/payment');
   };
 
   return (
@@ -41,31 +45,68 @@ function Information() {
           <h2>Informacion de contacto:</h2>
         </div>
         <div className="Information-form">
-          <form ref={form}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <input
               name="name"
               placeholder="Nombre completo"
               type="text"
-              required
+              {...register('name', { required: true })}
             />
             <input
               name="email"
               placeholder="Correo electronico"
               type="email"
-              required
+              {...register('email', { required: true })}
+              // , validate: (data) => data.some("@")
             />
             <input
               name="address"
               placeholder="Direccion"
               type="text"
-              required
+              {...register('address', { required: true })}
             />
-            <input name="apto" placeholder="Apto" type="text" required />
-            <input name="city" placeholder="Ciudad" type="text" required />
-            <input name="country" placeholder="Pais" type="text" required />
-            <input name="state" placeholder="Estado" type="text" required />
-            <input name="cp" placeholder="Codigo Postal" type="text" required />
-            <input name="phone" placeholder="Telefono" type="text" required />
+            <input
+              name="apto"
+              placeholder="Apto"
+              type="text"
+              {...register('apto', { required: true })}
+            />
+            <input
+              name="city"
+              placeholder="Ciudad"
+              type="text"
+              {...register('city', { required: true })}
+            />
+            <input
+              name="country"
+              placeholder="Pais"
+              type="text"
+              {...register('country', { required: true })}
+            />
+            <input
+              name="state"
+              placeholder="Estado"
+              type="text"
+              {...register('state', { required: true })}
+            />
+            <input
+              name="cp"
+              placeholder="Codigo Postal"
+              type="number"
+              {...register('cp', { required: true, valueAsNumber: true })}
+            />
+            <input
+              name="phone"
+              placeholder="Telefono"
+              type="number"
+              {...register('phone', { required: true, valueAsNumber: true })}
+            />
+            <input
+              name="submit"
+              placeholder="submit"
+              valur="submit"
+              type="submit"
+            />
           </form>
         </div>
         <div className="Information-buttons">
@@ -73,7 +114,7 @@ function Information() {
             Regresar
           </div>
           <div className="Information-next">
-            <button type="button" onClick={handleSubmit}>
+            <button type="button" onClick={handleSubmit} disabled={true}>
               Pagar
             </button>
           </div>
