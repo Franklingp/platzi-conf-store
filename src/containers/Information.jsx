@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -20,22 +20,9 @@ function Information() {
   const { register, handleSubmit } = useForm();
 
   //handle form submit
-  const onSubmit = (data) => {
-    console.log(data);
-    // const formData = new FormData(form.current);
-    // const buyer = {
-    //   name: formData.get('name'),
-    //   email: formData.get('email'),
-    //   address: formData.get('address'),
-    //   apto: formData.get('apto'),
-    //   city: formData.get('city'),
-    //   country: formData.get('country'),
-    //   state: formData.get('state'),
-    //   cp: formData.get('cp'),
-    //   phone: formData.get('phone'),
-    // };
-    // addBuyer(buyer);
-    // history.push('/checkout/payment');
+  const onSubmit = (buyerData) => {
+    addBuyer(buyerData);
+    history.push('/checkout/payment');
   };
 
   return (
@@ -45,7 +32,7 @@ function Information() {
           <h2>Informacion de contacto:</h2>
         </div>
         <div className="Information-form">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form id="customer-form" onSubmit={handleSubmit(onSubmit)}>
             <input
               name="name"
               placeholder="Nombre completo"
@@ -57,7 +44,6 @@ function Information() {
               placeholder="Correo electronico"
               type="email"
               {...register('email', { required: true })}
-              // , validate: (data) => data.some("@")
             />
             <input
               name="address"
@@ -114,7 +100,7 @@ function Information() {
             Regresar
           </div>
           <div className="Information-next">
-            <button type="button" onClick={handleSubmit} disabled={true}>
+            <button type="submit" form="customer-form">
               Pagar
             </button>
           </div>
